@@ -17,7 +17,7 @@ function Form({setData})
   e.preventDefault();
 
   try {
-    const res = await fetch("http://localhost:5000/api/content", {
+    const res = await fetch("https://internship-project-g9vl.onrender.com/api/content", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -42,7 +42,7 @@ function Form({setData})
   }
 };
 useEffect(() => {
-  fetch("http://localhost:5000/api/content")
+  fetch("https://internship-project-g9vl.onrender.com/api/content")
     .then(res => res.json())
     .then(data => setData(data))
     .catch(err => console.log(err));
