@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import backgr from '../assets/Images/bckgr2.jpeg'
 
 function Form({setData})
@@ -13,15 +13,40 @@ function Form({setData})
         setForm({...form,[e.target.name]:e.target.value})
     }
 
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-        setData(form)
-        setForm({
-            name:'',
-            introText:'',
-            shortMsg:''
-        })
-    }
+    const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:5000/api/content", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
+    });
+
+    const result = await res.json();
+
+    // frontend update
+    setData(result.data);
+
+    // clear form
+    setForm({
+      name: '',
+      introText: '',
+      shortMsg: ''
+    });
+
+  } catch (err) {
+    console.error("API error:", err);
+  }
+};
+useEffect(() => {
+  fetch("http://localhost:5000/api/content")
+    .then(res => res.json())
+    .then(data => setData(data))
+    .catch(err => console.log(err));
+}, []);
 
     return (
         <>
