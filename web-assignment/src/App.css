@@ -1,0 +1,1517 @@
+/* =========================================
+   GLOBAL RESET & FONTS
+   (Yeh zaroori hai taaki scrollbar aur white space na aaye)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Horizontal scrollbar ko rokne ke liye */
+}
+
+/* =========================================
+   MAIN HERO SECTION
+   ========================================= */
+.hero-premium {
+  position: relative;
+  width: 100vw;  /* Poori screen width */
+  height: 100vh; /* Poori screen height */
+  background-color: #151617;
+  /* Gradient adjusted for better corner coverage */
+  background-image: linear-gradient(115deg, #151617 45%, #6a3411 45%, #6a3411 60%, #111111 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden; /* Zaroori: Agar kuch bahar nikle to chup jaye */
+}
+
+/* Dotted pattern - Top Right */
+.hero-premium::after {
+  content: '';
+  position: absolute;
+  top: 50px;  /* Fixed position from top corner */
+  right: 50px; /* Fixed position from right corner */
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(#ffffff 2px, transparent 2px);
+  background-size: 18px 18px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Inner Container - Scales with screen height */
+.hero-premium-inner {
+  position: relative;
+  width: 90%;
+  height: 85vh; /* Screen height ka 85% use karega */
+  max-width: 1400px;
+}
+
+/* =========================================
+   LEFT SECTION: JENNY TEXT & FOLLOWERS
+   ========================================= */
+.hero-left {
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+/* Typography scaling using vh (viewport height) for consistency */
+.jenny-letters {
+  font-size: 12vh; /* Screen height ke hisab se text bada hoga */
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2vh;
+  line-height: 1.1;
+  margin: 0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.followers-box {
+  color: white;
+}
+
+.followers-count {
+  font-size: 7vh;
+  font-weight: 800;
+  line-height: 1;
+  display: block;
+  letter-spacing: 2px;
+}
+
+.followers-text {
+  font-size: 1.5vh;
+  letter-spacing: 0.5vh;
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: block;
+  color: #e0e0e0;
+}
+
+/* =========================================
+   CENTER SECTION: IMAGE (Bada Size)
+   ========================================= */
+.hero-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* Height ko screen ke hisab se set kiya hai taaki bada dikhe */
+  height: 90vh; 
+  /* Width automatically adjust hogi aspect ratio maintain karne ke liye */
+  aspect-ratio: 420 / 600; 
+  z-index: 3;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+/* Fallback for older browsers that don't support aspect-ratio */
+@supports not (aspect-ratio: 420 / 600) {
+  .hero-center {
+      width: 75vh; /* Approximate width based on 70vh height */
+  }
+}
+
+.hero-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================
+   RIGHT SECTION: GLASS CARD
+   ========================================= */
+.hero-card {
+  position: absolute;
+  bottom: 10vh;
+  right: 5%;
+  z-index: 4;
+  width: 22vw; /* Screen width ka 22% */
+  min-width: 280px; /* Isse chota nahi hoga */
+  max-width: 350px; /* Isse bada nahi hoga */
+  
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  margin-left: -70px;
+  padding: 4vh 3vw;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+}
+
+.hero-card h3 {
+  font-size: 3.5vh;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.hero-card p {
+  color: #b3b3b3;
+  font-size: 1.8vh;
+  margin-top: 10px;
+  margin-bottom: 5vh;
+  font-weight: 400;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.card-actions span {
+  font-size: 2vh;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.card-actions span:hover {
+  opacity: 0.7;
+}
+
+/* =========================================
+   ONLY FOR MOBILE (Vertical Layout)
+   ========================================= */
+@media (max-width: 768px) {
+  .hero-premium {
+    height: auto;
+    min-height: 100vh;
+    padding: 50px 0;
+    overflow-y: auto; /* Allow vertical scroll on mobile only */
+  }
+  
+  .hero-premium-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .hero-premium::after {
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero-left {
+    position: relative;
+    transform: none;
+    left: auto;
+    text-align: center;
+    height: auto;
+    margin-bottom: 40px;
+  }
+
+  .jenny-letters { font-size: 4rem; letter-spacing: 0.5rem; }
+  .followers-count { font-size: 3rem; }
+  .followers-text { font-size: 1rem; }
+
+  .hero-center {
+    position: relative;
+    transform: none;
+    left: auto;
+    top: auto;
+    height: 50vh;
+    width: auto;
+    margin-bottom: -50px; /* Overlap effect */
+  }
+
+  .hero-card {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 85%;
+    min-width: auto;
+    padding: 30px;
+  }
+  .hero-card h3 { font-size: 2rem; }
+  .hero-card p { font-size: 1rem; margin-bottom: 30px; }
+  .card-actions span { font-size: 1rem; }
+}
+
+.hero-card {
+  position: absolute;
+  bottom: 10vh;
+  
+  /* --- YAHAN MAIN CHANGES HAIN --- */
+  left: 50%; /* Card ko center mein lata hai */
+  margin-left: 120px; /* Center se thoda right shift karta hai taaki image par perfect overlap ho */
+  right: auto; /* Purane right margin ko disable karne ke liye */
+  /* ------------------------------- */
+
+  z-index: 4;
+  width: 22vw; 
+  min-width: 280px; 
+  max-width: 350px; 
+  
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  
+  padding: 4vh 3vw;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark background jisme thoda brown/orange gradient ka touch hai */
+.slider {
+  background-color: #000;
+  background-image: linear-gradient(145deg, #000 20%, #2a1100 50%, #000 80%);
+  min-height: 100vh; /* Pura screen cover karne ke liye */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.slider-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- IMAGES ALIGNMENT & OVERLAP --- */
+.slider-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.slider-images img {
+  object-fit: cover;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Left Image */
+.slider-images img:nth-child(1) {
+  width: 160px;
+  height: 260px;
+  z-index: 1;
+  /* Right ki taraf shift aur thoda chota kiya hai */
+  transform: translateX(40px) scale(0.9);
+  filter: brightness(0.8); /* Thoda dark effect */
+}
+
+/* Center Image (Main) */
+.slider-images img:nth-child(2) {
+  width: 200px;
+  height: 320px;
+  z-index: 2; /* Ise sabse aage rakhne ke liye */
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.8); /* Shadow taaki pop-out lage */
+}
+
+/* Right Image */
+.slider-images img:nth-child(3) {
+  width: 160px;
+  height: 260px;
+  z-index: 1;
+  /* Left ki taraf shift aur thoda chota kiya hai */
+  transform: translateX(-40px) scale(0.9);
+  filter: brightness(0.8);
+}
+
+/* --- DOTS & TEXT STYLING --- */
+.slider-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dots-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px; /* Gallery text se pehle ka space */
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #666; /* Inactive grey dot */
+  display: inline-block;
+}
+
+.dot.active {
+  background-color: #fff; /* Active white dot */
+}
+
+.slider-content h2 {
+  color: #ffffff;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@500&display=swap');
+
+/* =========================================
+   MAIN SECTION & BACKGROUND
+   ========================================= */
+.gallery-section {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #050505;
+  /* Diagonal brown background exactly like screenshot */
+  background-image: linear-gradient(145deg, #050505 50%, #7a3a12 50%, #7a3a12 75%, #050505 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  padding: 8vh 0;
+  box-sizing: border-box;
+}
+
+.gallery-container {
+  width: 90%;
+  max-width: 900px; /* Centered layout as per image */
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+/* =========================================
+   MAIN IMAGE AREA
+   ========================================= */
+.gallery-main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Top Profile Overlay */
+.main-top-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+}
+
+.profile-pic-dummy {
+  width: 35px;
+  height: 35px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+.profile-handle {
+  color: #ddd;
+  font-size: 0.7rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+/* Bottom Glass Overlay */
+.main-bottom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 60px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  box-sizing: border-box;
+}
+
+.glass-text {
+  color: #222;
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: 60%;
+  margin: 0;
+}
+
+.glass-icons {
+  display: flex;
+  gap: 15px;
+  color: #111;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   THUMBNAILS ROW
+   ========================================= */
+.gallery-row-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 15px;
+  overflow: hidden; /* Helps simulate the cut-off effect */
+}
+
+.gallery-thumbnails img {
+  width: 18%; /* Approx 5 images fit perfectly */
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-thumbnails img:hover {
+  transform: scale(1.05);
+}
+
+/* "View all" link alignment */
+.view-all-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20%; /* Aligns text below the 4th/5th image */
+  margin-top: 10px;
+}
+
+.view-all-text {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================================
+   SHORT MESSAGE AREA
+   ========================================= */
+.short-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.short-message-container h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.short-message-container p {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: #cccccc;
+  max-width: 80%;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.short-message-container h4 {
+  /* Using a serif font for "Thank you" to match the screenshot */
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .gallery-thumbnails img {
+    width: 22%; /* Slightly larger thumbs on mobile */
+  }
+  .view-all-container {
+    padding-right: 0;
+  }
+  .main-bottom-overlay {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+  .glass-text {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* =========================================
+   TOP PROFILE OVERLAY
+   ========================================= */
+.main-top-overlay {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+}
+
+.profile-pic-dummy {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+  /* Screenshot jaisa halka shadow */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3); 
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  color: #ffffff; /* Ekdum white */
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.profile-handle {
+  color: rgba(255, 255, 255, 0.7); /* Halka grey/transparent */
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+/* =========================================
+   BOTTOM GLASS OVERLAY
+   ========================================= */
+.main-bottom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 30px; /* Thodi zyada jagah di hai */
+  
+  /* YAHAN MAGIC HAI: Background transparent kiya aur blur kam kiya */
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  /* Glass ke upar wali shiny line */
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.glass-text {
+  color: #ffffff; /* Text ko dark se white kar diya */
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5; /* Line ke beech ki gap */
+  margin: 0;
+}
+
+.glass-icons {
+  display: flex;
+  gap: 20px; /* Icons ke beech thodi zyada jagah */
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  align-items: center;
+}
+
+/* Icons ke emojis ko slightly center align karne ke liye */
+.glass-icons span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+/* =========================================
+   FORM CONTAINER (Glassmorphism Look)
+   ========================================= */
+.form-section {
+  width: 90%;
+  max-width: 500px;
+  margin: 5vh auto; /* Center alignment */
+  padding: 40px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  
+  /* Glass effect matching your theme */
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.form-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   FORM ELEMENTS
+   ========================================= */
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Inputs ke beech ki space */
+}
+
+.form-section input,
+.form-section textarea {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05); /* Halka transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Placeholder text color */
+.form-section input::placeholder,
+.form-section textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Jab user type karne ke liye click kare (Focus) */
+.form-section input:focus,
+.form-section textarea:focus {
+  border-color: #9e4c19; /* Theme ka brown/orange accent */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(158, 76, 25, 0.3);
+}
+
+/* Textarea specific styling */
+.form-section textarea {
+  min-height: 120px;
+  resize: vertical; /* Sirf upar-neeche resize allow karega */
+}
+
+/* =========================================
+   SUBMIT BUTTON
+   ========================================= */
+.form-section button {
+  padding: 15px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #9e4c19, #7a3a12);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(122, 58, 18, 0.4);
+}
+
+.form-section button:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 600px) {
+  .form-section {
+    padding: 30px 20px;
+  }
+  
+  .form-section h2 {
+    font-size: 1.5rem;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800;900&display=swap');
+
+/* =========================================
+   MAIN SECTION & DIAGONAL BACKGROUND
+   ========================================= */
+.intro {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  /* Exact sharp diagonal background as seen in screenshot */
+  background-color: #030303; /* Pure dark */
+  background-image: linear-gradient(160deg, #030303 55%, #6a2e09 55%, #a64c12 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  padding: 10vh 0;
+  box-sizing: border-box;
+}
+
+.intro-wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  gap: 5%;
+}
+
+/* =========================================
+   LEFT SECTION: EXACT IMAGE OVERLAPS
+   ========================================= */
+.intro-images {
+  position: relative;
+  width: 45%;
+  height: 65vh;
+  min-height: 500px;
+}
+
+.img {
+  position: absolute;
+  object-fit: cover;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  border-radius: 4px; /* Slight softening of edges */
+  transition: transform 0.3s ease;
+}
+
+/* Background Image (Trees/Path) */
+.img1 {
+  width: 55%;
+  height: 80%;
+  top: 10%;
+  left: 15%;
+  z-index: 1;
+  opacity: 0.9;
+  filter: brightness(0.8); /* Thoda dark taaki upar ki photos pop karein */
+}
+
+/* Top Right Image (Woman Face) */
+.img2 {
+  width: 50%;
+  height: 65%;
+  top: -5%;
+  right: 5%;
+  z-index: 2;
+}
+
+/* Bottom Left Image (Woman in Dress) */
+.img3 {
+  width: 45%;
+  height: 70%;
+  bottom: -5%;
+  left: -5%;
+  z-index: 3;
+}
+
+/* Hover effect */
+.img:hover {
+  transform: translateY(-5px) scale(1.02);
+  z-index: 10;
+}
+
+/* =========================================
+   RIGHT SECTION: CONTENT & TYPOGRAPHY
+   ========================================= */
+.intro-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 4;
+}
+
+.intro-title {
+  /* MY INTRO styling: Extremely bold and stacked */
+  font-size: clamp(5rem, 9vw, 8rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin: 0;
+  
+  /* Forces the text to stack "MY" over "INTRO" automatically */
+  display: flex;
+  flex-direction: column;
+}
+
+.intro-text {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  color: #d1d1d1;
+  line-height: 2;
+  margin-top: 4vh;
+  margin-bottom: 6vh;
+  font-weight: 400;
+  max-width: 95%;
+  text-align: justify; /* Text block matching screenshot */
+}
+
+/* =========================================
+   BUTTONS (Plain Text Style)
+   ========================================= */
+.intro-buttons {
+  display: flex;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.btn-outline, .btn-fill {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease, transform 0.2s;
+}
+
+.btn-outline:hover, .btn-fill:hover {
+  opacity: 0.7;
+  transform: translateX(5px);
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 900px) {
+  .intro {
+    background-image: linear-gradient(180deg, #030303 60%, #a64c12 100%);
+  }
+  .intro-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+  
+  .intro-images {
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 20px;
+  }
+  
+  .img1 { left: 25%; top: 10%; width: 50%; height: 80%; }
+  .img2 { right: 10%; top: 0; width: 45%; height: 60%; }
+  .img3 { left: 5%; bottom: 0; width: 40%; height: 65%; }
+  
+  .intro-content {
+    width: 100%;
+    align-items: center;
+  }
+  
+  .intro-text {
+    text-align: center;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@500&display=swap');
+
+/* =========================================
+   MAIN SECTION - FIXED 100VH NO SCROLL
+   ========================================= */
+.gallery-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh; /* Strictly 1 screen height */
+  background-color: #050505;
+  background-image: linear-gradient(145deg, #050505 45%, #7a3a12 45%, #7a3a12 70%, #050505 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden; /* Scrollbar ko disable kar dega */
+}
+
+.gallery-container {
+  width: 90%;
+  max-width: 900px;
+  height: 90vh; /* Container ko slightly chota rakha taaki top/bottom me space rahe */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Sabhi elements ko brabar space me baat dega */
+  z-index: 2;
+}
+
+/* =========================================
+   MAIN IMAGE AREA
+   ========================================= */
+.gallery-main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 45vh; /* Badi image ko exactly 45% screen height di hai */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Top Profile Overlay */
+.main-top-overlay {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+}
+
+.profile-pic-dummy {
+  width: 35px;
+  height: 35px;
+  background-color: #ccc;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.profile-handle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+}
+
+/* Bottom Glass Overlay */
+.main-bottom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 25px; /* Padding kam ki taaki height na badhe */
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.glass-text {
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.glass-icons {
+  display: flex;
+  gap: 15px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  align-items: center;
+}
+
+.glass-icons span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* =========================================
+   THUMBNAILS ROW
+   ========================================= */
+.gallery-row-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  justify-content: space-between; /* Sabko barabar gap dega */
+  gap: 10px;
+  overflow: hidden;
+}
+
+.gallery-thumbnails img {
+  width: 16%; /* 6 images fit karne ke liye width adjust ki hai */
+  aspect-ratio: 1; /* Hamesha square rahega */
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-thumbnails img:hover {
+  transform: scale(1.05);
+}
+
+.half-visible {
+  opacity: 0.5; /* Screenshot ke jaisa aadha visible effect */
+}
+
+/* "View all" link */
+.view-all-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2%;
+  margin-top: 8px; /* Margin kam kiya */
+}
+
+.view-all-text {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================================
+   SHORT MESSAGE AREA
+   ========================================= */
+.short-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.short-message-container h2 {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  letter-spacing: 2px;
+  margin: 0 0 10px 0; /* Margins drastically reduced */
+}
+
+.short-message-container p {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  color: #cccccc;
+  max-width: 80%;
+  line-height: 1.5;
+  margin: 0 0 15px 0; /* Margins drastically reduced */
+}
+
+.short-message-container h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .gallery-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 0;
+    overflow-y: auto; /* Mobile par thoda scroll allow karna zaroori hai */
+  }
+  .gallery-container {
+    height: auto;
+    gap: 20px;
+  }
+  .gallery-thumbnails img {
+    width: 22%;
+  }
+  .main-bottom-overlay {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  .glass-text {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800;900&family=Playfair+Display:wght@500&display=swap');
+
+/* =========================================
+   GLOBAL RESET & FONTS
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #050505; /* Fallback dark background */
+}
+
+/* =========================================
+   1. MAIN HERO SECTION (J.E.N N.Y)
+   ========================================= */
+.hero-premium {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+.hero-premium-inner {
+  position: relative;
+  width: 90%;
+  height: 85vh;
+  max-width: 1200px;
+}
+
+/* Dotted pattern - Top Right */
+.hero-premium::after {
+  content: '';
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(#ffffff 2px, transparent 2px);
+  background-size: 18px 18px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* LEFT TEXT (Desktop: Spread out / Mobile: Centered) */
+.hero-left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Desktop me JENNY upar aur 15K neeche */
+  z-index: 2;
+}
+
+.jenny-letters {
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1.5vw;
+  line-height: 1.1;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.followers-box {
+  color: white;
+}
+
+.followers-count {
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.followers-text {
+  font-size: 1rem;
+  letter-spacing: 0.4rem;
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: block;
+  color: #e0e0e0;
+}
+
+/* CENTER IMAGE */
+.hero-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 75vh;
+  aspect-ratio: 420 / 600;
+  z-index: 3;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.hero-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* RIGHT GLASS CARD */
+.hero-card {
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
+  margin-left: 100px; /* Overlap on Desktop */
+  z-index: 4;
+  width: 320px;
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 30px;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+}
+
+.hero-card h3 { font-size: 2rem; font-weight: 500; margin: 0; }
+.hero-card p { color: #b3b3b3; font-size: 0.9rem; margin-top: 5px; margin-bottom: 30px; }
+.card-actions { display: flex; justify-content: space-between; width: 90%; }
+.card-actions span { font-size: 1rem; font-weight: 600; cursor: pointer; }
+
+/* --- HERO MOBILE RESPONSIVENESS (Exact Match to Your Image) --- */
+@media (max-width: 768px) {
+  .hero-premium { height: auto; min-height: 100vh; padding: 50px 0; overflow-y: auto; }
+  .hero-premium-inner { display: flex; flex-direction: column; align-items: center; height: auto; }
+  
+  .hero-premium::after { top: 20px; right: 20px; width: 80px; height: 80px; }
+  
+  .hero-left {
+    position: relative; top: 0; transform: none; left: auto;
+    height: auto; width: 100%;
+    align-items: center; text-align: center;
+    gap: 10px; margin-bottom: 30px;
+  }
+  .jenny-letters { font-size: 4rem; letter-spacing: 0.5rem; }
+  .followers-box { display: flex; flex-direction: column; align-items: center; }
+  .followers-count { font-size: 3.5rem; justify-content: center; }
+  
+  .hero-center {
+    position: relative; left: auto; top: auto; transform: none;
+    height: 55vh; margin-bottom: 50px;
+  }
+  
+  /* Mobile pe Card right edge se chipka hua */
+  .hero-card {
+    position: absolute;
+    bottom: 50px;
+    right: 0; 
+    left: auto; margin-left: 0;
+    width: 70%; max-width: 280px;
+    border-radius: 12px 0 0 12px;
+  }
+}
+
+/* =========================================
+   2. INTRO SECTION (MY INTRO)
+   ========================================= */
+.intro {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  padding: 10vh 0;
+  box-sizing: border-box;
+}
+
+.intro-wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5%;
+}
+
+.intro-images {
+  position: relative;
+  width: 45%;
+  height: 65vh;
+  min-height: 500px;
+}
+
+.intro-images .img {
+  position: absolute;
+  object-fit: cover;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+}
+
+.img1 { width: 55%; height: 80%; top: 10%; left: 15%; z-index: 1; filter: brightness(0.8); }
+.img2 { width: 50%; height: 65%; top: -5%; right: 5%; z-index: 2; }
+.img3 { width: 45%; height: 70%; bottom: -5%; left: -5%; z-index: 3; }
+
+.intro-content { width: 50%; display: flex; flex-direction: column; justify-content: center; z-index: 4; }
+
+.intro-title {
+  font-size: clamp(5rem, 8vw, 8rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.intro-text {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  color: #d1d1d1;
+  line-height: 2;
+  margin-top: 4vh; margin-bottom: 6vh;
+  text-align: justify;
+}
+
+.intro-buttons { display: flex; gap: 4rem; }
+.btn-outline, .btn-fill { background: transparent; border: none; color: #ffffff; font-size: 1.5rem; cursor: pointer; }
+
+@media (max-width: 900px) {
+  .intro-wrapper { flex-direction: column; text-align: center; gap: 50px; }
+  .intro-images { width: 100%; height: 40vh; margin-bottom: 20px; }
+  .intro-content { width: 100%; align-items: center; }
+  .intro-text { text-align: center; }
+}
+
+/* =========================================
+   3. GALLERY SECTION (Strict fit without scroll if possible)
+   ========================================= */
+.gallery-section {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  padding: 5vh 0;
+  box-sizing: border-box;
+}
+
+.gallery-container {
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.gallery-main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Set to exact proportion of full image */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.main-image { width: 100%; height: 100%; object-fit: cover; }
+
+/* Profile Top Overlay */
+.main-top-overlay {
+  position: absolute; top: 20px; left: 20px;
+  display: flex; align-items: center; gap: 10px; z-index: 3;
+}
+.profile-pic-dummy { width: 35px; height: 35px; background-color: #ccc; border-radius: 50%; }
+.profile-info { display: flex; flex-direction: column; }
+.profile-name { color: #fff; font-size: 0.9rem; font-weight: 600; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
+.profile-handle { color: #ddd; font-size: 0.7rem; }
+
+/* Glass Bottom Overlay */
+.main-bottom-overlay {
+  position: absolute; bottom: 0; left: 0; width: 100%;
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 15px 25px; box-sizing: border-box;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.glass-text { color: #fff; font-size: 0.8rem; margin: 0; }
+.glass-icons { display: flex; gap: 15px; color: #fff; font-size: 0.9rem; }
+
+/* THUMBNAILS */
+.gallery-row-wrapper { display: flex; flex-direction: column; margin-bottom: 30px; }
+.gallery-thumbnails { display: flex; gap: 15px; overflow: hidden; }
+.gallery-thumbnails img { width: 18%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+.half-visible { opacity: 0.5; }
+
+.view-all-container { display: flex; justify-content: flex-end; padding-right: 18%; margin-top: 10px; }
+.view-all-text { color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+
+/* SHORT MESSAGE */
+.short-message-container { display: flex; flex-direction: column; align-items: center; text-align: center; color: #fff; }
+.short-message-container h2 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 15px; }
+.short-message-container p { font-size: 1rem; color: #ccc; max-width: 80%; margin-bottom: 30px; }
+.short-message-container h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500; }
+
+@media (max-width: 768px) {
+  .gallery-main-wrapper { height: 40vh; }
+  .gallery-thumbnails img { width: 22%; }
+  .view-all-container { padding-right: 0; }
+  .main-bottom-overlay { flex-direction: column; gap: 10px; padding: 10px; }
+  .glass-text { width: 100%; text-align: center; }
+}
