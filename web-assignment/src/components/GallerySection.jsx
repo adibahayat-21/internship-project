@@ -9,7 +9,7 @@ import gallerys5 from '../assets/Images/gallerys5.png';
 import gallerys0 from '../assets/Images/Rectangle 55.png';
 import bckgr from '../assets/Images/bckgr2.jpeg'
 
-function GallerySection({ shortMsg }) {
+function GallerySection() {
   return (
     <section className="gallery-section" style={{
       backgroundImage: `url(${bckgr})`,
@@ -62,11 +62,11 @@ function GallerySection({ shortMsg }) {
         </div>
 
         {/* ================= SHORT MESSAGE AREA ================= */}
-        <div className="short-message-container">
+        {/* <div className="short-message-container">
           <h2>SHORT MESSAGE</h2>
           <p>{shortMsg || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis"}</p>
           <h4>Thank you ! Visit Again</h4>
-        </div>
+        </div> */}
 
       </div>
     </section>
